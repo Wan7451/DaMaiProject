@@ -1,6 +1,5 @@
 package com.yztc.damaiproject.utils;
 
-import android.content.Context;
 import android.os.Environment;
 
 import com.yztc.damaiproject.application.App;
@@ -27,6 +26,24 @@ public class FileUtils {
     public static File getJsonCacheFloder(){
         File rootFiloder = getCahceRootFiloder();
         File cache=new File(rootFiloder,"json");
+        if(!cache.exists()){
+            cache.mkdirs();
+        }
+        return cache;
+    }
+
+    public static File getDnsCacheFloder(){
+        File rootFiloder = getCahceRootFiloder();
+        File cache=new File(rootFiloder,"dns");
+        if(!cache.exists()){
+            cache.mkdirs();
+        }
+        return cache;
+    }
+
+    public static File getNetCacheFloder(){
+        File rootFiloder = getCahceRootFiloder();
+        File cache=new File(rootFiloder,"net");
         if(!cache.exists()){
             cache.mkdirs();
         }

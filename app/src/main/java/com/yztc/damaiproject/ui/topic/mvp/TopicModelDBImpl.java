@@ -1,9 +1,7 @@
 package com.yztc.damaiproject.ui.topic.mvp;
 
-import com.alibaba.fastjson.JSONObject;
 import com.yztc.damaiproject.db.SQLManager;
 import com.yztc.damaiproject.net.NetFunction;
-import com.yztc.damaiproject.net.NetRequest;
 import com.yztc.damaiproject.ui.topic.TopicBean;
 import com.yztc.damaiproject.ui.topic.TopicBeanDao;
 
@@ -14,9 +12,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * Created by wanggang on 2017/3/14.
@@ -82,7 +77,6 @@ public class TopicModelDBImpl implements ITopicModel {
             List<TopicBean> topicList = new TopicModelDiskImpl
                     .TopicParseFunction().apply(json);
 
-
             for (TopicBean bean : topicList) {
                 bean.setKey(s);
                 bean.setTime(System.currentTimeMillis());//插入数据库的时间
@@ -92,6 +86,8 @@ public class TopicModelDBImpl implements ITopicModel {
                     .where(TopicBeanDao.Properties.Key.eq(s))
                     .list();
             topicDao.deleteInTx(old);
+
+
             topicDao.insertOrReplaceInTx(topicList);//插入数据库
             return topicList;
         }

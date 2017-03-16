@@ -17,6 +17,7 @@ import com.yztc.damaiproject.ui.topic.mvp.ITopicPresenter;
 import com.yztc.damaiproject.ui.topic.mvp.ITopicView;
 import com.yztc.damaiproject.ui.topic.mvp.TopicPresenterDBImpl;
 import com.yztc.damaiproject.ui.topic.mvp.TopicPresenterDiskImpl;
+import com.yztc.damaiproject.ui.topic.mvp.retrofit.TopicRetrofitPresenter;
 import com.yztc.damaiproject.widget.LoadMoreRecycleView;
 
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class DaMaiFragment extends Fragment implements
         topicRecycle.setOnLoadMoreListener(this);
 
 
-        topicPresenter = new TopicPresenterDBImpl(this);
+        topicPresenter = new TopicRetrofitPresenter(this);
 
         topicPresenter.loadData();
     }
