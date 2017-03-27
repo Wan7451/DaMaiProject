@@ -13,7 +13,8 @@ import com.yztc.damaiproject.application.App;
 public class NetUtils {
 
     public static boolean isNetConnect() {
-        ConnectivityManager mgr = (ConnectivityManager) App.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager mgr = (ConnectivityManager) App.getContext()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = mgr.getActiveNetworkInfo();
         return networkInfo != null;
     }

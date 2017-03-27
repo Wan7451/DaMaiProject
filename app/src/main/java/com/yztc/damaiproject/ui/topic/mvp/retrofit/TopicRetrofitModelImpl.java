@@ -37,14 +37,9 @@ public class TopicRetrofitModelImpl implements ITopicRetrofitModel {
     private final IApi iApi;
 
     public TopicRetrofitModelImpl() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(NetConfig.BASE_URL)
-                .client(NetRequest.getHttpClient())
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-        this.iApi = retrofit.create(IApi.class);
+        this.iApi = NetRequest
+                .getRetrofit()
+                .create(IApi.class);
     }
 
 

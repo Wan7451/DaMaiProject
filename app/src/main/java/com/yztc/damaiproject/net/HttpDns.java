@@ -1,5 +1,8 @@
 package com.yztc.damaiproject.net;
 
+import android.text.TextUtils;
+import android.util.Log;
+
 import com.yztc.damaiproject.utils.FileUtils;
 
 import java.io.File;
@@ -39,7 +42,7 @@ public class HttpDns implements Dns {
         try {
             String s = getHTTPDnsClient().newCall(dnsRequest).execute().body().string();
             //避免服务器挂了却无法查询DNS
-            if (!s.matches("\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b")) {
+            if (TextUtils.isEmpty(s)) {
                 return Dns.SYSTEM.lookup(hostname);
             }
             return Arrays.asList(InetAddress.getAllByName(s));

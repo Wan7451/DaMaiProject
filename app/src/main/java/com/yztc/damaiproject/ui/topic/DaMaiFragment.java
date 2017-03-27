@@ -30,6 +30,7 @@ import butterknife.ButterKnife;
 public class DaMaiFragment extends Fragment implements
         SwipeRefreshLayout.OnRefreshListener ,ITopicView, LoadMoreRecycleView.OnLoadMoreListener {
 
+
     @BindView(R.id.topic_recycle)
     LoadMoreRecycleView topicRecycle;
     @BindView(R.id.topic_swipe)

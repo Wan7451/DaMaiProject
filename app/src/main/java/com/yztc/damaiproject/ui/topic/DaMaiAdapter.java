@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.yztc.damaiproject.R;
+import com.yztc.damaiproject.image.ImageLoader;
 import com.yztc.damaiproject.net.NetConfig;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class DaMaiAdapter extends RecyclerView.Adapter<DaMaiAdapter.DaMaiHolder>
         String i = bean.getI()+"";
         String imageURI = NetConfig.BASR_IMG + i.substring(0, i.length()-2) + "/" + i + "_n.jpg";
 
-        Glide.with(context).load(imageURI).into(holder.itemTopicIcon);
+        ImageLoader.load(context,imageURI,holder.itemTopicIcon);
     }
 
     @Override

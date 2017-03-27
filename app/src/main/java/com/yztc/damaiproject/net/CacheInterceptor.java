@@ -25,13 +25,13 @@ public class CacheInterceptor implements Interceptor {
                     .build();
         }
 
+        //1  get 请求
+        //2  头部字段
         Response response = chain.proceed(request);
-
         if (NetUtils.isNetConnect()) {
-
             return response.newBuilder()
                     .removeHeader("Pragma")
-                    .addHeader("Cache-Control", "public, max-age=60")
+                    .addHeader("Cache-Control", "public, max-age=300")
                     .build();
         } else {
             int maxTime = 24 * 60 * 60;
